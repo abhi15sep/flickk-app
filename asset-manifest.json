@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/flickk-app/static/css/main.0e8aa222.chunk.css",
+    "main.js": "/flickk-app/static/js/main.ce78c6e5.chunk.js",
+    "main.js.map": "/flickk-app/static/js/main.ce78c6e5.chunk.js.map",
+    "runtime~main.js": "/flickk-app/static/js/runtime~main.805df534.js",
+    "runtime~main.js.map": "/flickk-app/static/js/runtime~main.805df534.js.map",
+    "static/js/2.d9d8b21b.chunk.js": "/flickk-app/static/js/2.d9d8b21b.chunk.js",
+    "static/js/2.d9d8b21b.chunk.js.map": "/flickk-app/static/js/2.d9d8b21b.chunk.js.map",
+    "index.html": "/flickk-app/index.html",
+    "precache-manifest.5d0923d1e4119da549b11370fca0daec.js": "/flickk-app/precache-manifest.5d0923d1e4119da549b11370fca0daec.js",
+    "service-worker.js": "/flickk-app/service-worker.js",
+    "static/css/main.0e8aa222.chunk.css.map": "/flickk-app/static/css/main.0e8aa222.chunk.css.map",
+    "static/media/404.jpg": "/flickk-app/static/media/404.c35f1447.jpg",
+    "static/media/tmdb.svg": "/flickk-app/static/media/tmdb.02a9430b.svg"
+  }
+}
