@@ -5,6 +5,9 @@
 
 // https://api.themoviedb.org/3/movie/popular?api_key=df6f6314c5440cba12e1c99403e78dc3
 
+export const POPULAR_MOVIES_URL =
+  "https://api.themoviedb.org/3/movie/popular?api_key=";
+
 export const API_URL = "https://api.themoviedb.org/3/";
 export const API_KEY = "df6f6314c5440cba12e1c99403e78dc3";
 
@@ -13,7 +16,7 @@ export const IMG_BASE_URL = "https://image.tmdb.org/t/p/";
 // export const BACKDROP_SIZE = "w500";
 export const BACKDROP_SIZE = "w1280";
 export const LOGO_SIZE = "w92";
-export const POSTER_SIZE = "w185";
+export const POSTER_SIZE = "w342";
 
 // const configuration = {
 //   images: {

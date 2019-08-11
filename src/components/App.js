@@ -1,17 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import "../App.css";
-import { HomePage } from "./HomePage";
+import HomePage from "./HomePage";
 import Header from "./Header";
 import MovieCard from "./MovieCard";
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <HomePage />
-      <MovieCard />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <HomePage />
+        <MovieCard />
+      </div>
+    );
+  }
 }
 
 export default App;

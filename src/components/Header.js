@@ -6,7 +6,7 @@ export default class Header extends Component {
   render() {
     return (
       <nav
-        className="navbar navbar-dark"
+        className=""
         style={{
           background: "rgba(0, 0, 0, 0.9)",
           color: "#eeeeee"
@@ -21,6 +21,7 @@ export default class Header extends Component {
         >
           <h1
             style={{
+              fontSize: "2rem",
               textAlign: "left",
               display: "inline-block",
               margin: "0.5rem 1rem",
@@ -32,7 +33,7 @@ export default class Header extends Component {
               <Movie
                 style={{
                   height: "2rem",
-                  verticalAlign: "sub"
+                  verticalAlign: "bottom"
                 }}
               />
             </span>
@@ -49,7 +50,8 @@ export default class Header extends Component {
             <a
               style={{
                 textDecoration: "none",
-                color: "#eeeeee"
+                color: "#eeeeee",
+                userSelect: "none"
               }}
               href="http://www.themoviedb.org"
               target="_blank"
