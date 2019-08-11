@@ -1,3 +1,27 @@
 .App {
   text-align: center;
 }
+
+.card-body {
+  padding: 1rem;
+  color: #dddddd;
+}
+
+@media screen and (max-width: 480px) {
+  #title {
+    font-size: 1.25rem !important;
+  }
+
+  #flickk-icon {
+    height: 1.5rem !important;
+  }
+
+  #tmdb-logo a {
+    font-size: 0.8rem !important;
+    font-weight: 200 !important;
+  }
+
+  #tmdb-logo a img {
+    height: 1.75rem !important;
+  }
+}

@@ -2,25 +2,58 @@ import React, { Component } from "react";
 
 import { CardGroup, Card, Container, Col, Button } from "react-bootstrap";
 
-import { POPULAR_MOVIES_URL, API_KEY, IMG_BASE_URL, POSTER_SIZE } from "../API";
+import {
+  POPULAR_MOVIES_URL,
+  PAGE_NUM,
+  API_KEY,
+  IMG_BASE_URL,
+  POSTER_SIZE
+} from "../API";
+import SearchBar from "./SearchBar";
 
 export default class HomePage extends Component {
   state = {
     movies: [],
-    searchQuery: ""
+    isLoading: true,
+    searchQuery: "",
+    pageNum: 1
   };
 
+  searchMovies(e) {
+    console.log(e.target.value);
+    // set page num to 1
+  }
+
   componentDidMount() {
-    fetch(`${POPULAR_MOVIES_URL}${API_KEY}`)
+    const { movies } = this.state;
+
+    fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${this.state.pageNum}`)
       .then(data => data.json())
       .then(jsondata => {
         this.setState({
-          movies: jsondata.results
+          isLoading: false,
+          movies: [...movies, ...jsondata.results]
         });
       })
       .catch(err => console.error(err));
     // this.renderMovies();
   }
+
+  fetchMoreMovies = () => {
+    // fix image not found error later
+
+    const { movies, pageNum } = this.state;
+
+    fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${pageNum + 1}`)
+      .then(data => data.json())
+      .then(jsondata => {
+        this.setState({
+          movies: [...movies, ...jsondata.results],
+          pageNum: jsondata.page
+        });
+      })
+      .catch(err => console.error(err));
+  };
 
   render() {
     const { movies } = this.state;
@@ -53,12 +86,25 @@ export default class HomePage extends Component {
             margin: "1rem"
           }}
         >
+          Search
+        </h2>
+        <SearchBar search={this.searchMovies} />
+        <h2
+          style={{
+            margin: "1rem"
+          }}
+        >
           Popular Movies
         </h2>
 
         <CardGroup>{renderedMoviesList}</CardGroup>
 
-        <Button variant="success" size="lg" block>
+        <Button
+          onClick={this.fetchMoreMovies}
+          variant="success"
+          size="lg"
+          block
+        >
           Load More...
         </Button>
       </Container>
