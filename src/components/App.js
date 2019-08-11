@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "../App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import MovieCard from "./MovieCard";
@@ -7,11 +8,15 @@ import MovieCard from "./MovieCard";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-        <HomePage />
-        <MovieCard />
-      </div>
+      <Router>
+        <Fragment>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/:movieID" component={MovieCard} />
+          </Switch>
+        </Fragment>
+      </Router>
     );
   }
 }

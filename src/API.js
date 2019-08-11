@@ -10,6 +10,10 @@ export const POPULAR_MOVIES_URL =
 export const SEARCH_MOVIES_URL =
   "https://api.themoviedb.org/3/search/movie?api_key=";
 
+export const MOVIE_CREDITS_URL = "https://api.themoviedb.org/3/movie/";
+
+export const APPEND_CREDITS = "/credits?api_key=";
+
 export const SEARCH_QUERY = "&query=";
 
 export const API_URL = "https://api.themoviedb.org/3/";

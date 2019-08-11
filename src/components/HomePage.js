@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { CardGroup, Card, Container, Col, Button } from "react-bootstrap";
 
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 import image404 from "../assets/404.jpg";
 
 import SearchBar from "./SearchBar";
@@ -12,7 +14,9 @@ import {
   PAGE_NUM,
   API_KEY,
   IMG_BASE_URL,
-  POSTER_SIZE
+  POSTER_SIZE,
+  MOVIE_CREDITS_URL,
+  APPEND_CREDITS
 } from "../API";
 
 export default class HomePage extends Component {
@@ -61,7 +65,7 @@ export default class HomePage extends Component {
       document.getElementById("popular-or-results").innerText =
         "Popular Movies";
 
-      document.getElementById("load-more").style.display = "block";
+      document.getElementById("load-more-btn").style.display = "block";
 
       if (sessionStorage.getItem("BaseState")) {
         let state = JSON.parse(sessionStorage.getItem("BaseState"));
@@ -102,8 +106,7 @@ export default class HomePage extends Component {
 
       document.getElementById("popular-or-results").innerText = "Results";
 
-      // remove load more button
-      document.getElementById("load-more").style.display = "none";
+      document.getElementById("load-more-btn").style.display = "none";
     }
   };
 
@@ -133,56 +136,62 @@ export default class HomePage extends Component {
       return (
         <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
           <Card bg="dark" text="white" className="mb-3">
-            <Card.Img
-              variant="top"
-              alt={movie.title}
-              src={`${IMG_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
-              onError={this.addDefaultSrcToImg}
-            />
+            <Link
+              to={{ pathname: `/${movie.id}`, movieName: `${movie.title}` }}
+            >
+              <Card.Img
+                variant="top"
+                alt={movie.title}
+                src={`${IMG_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
+                onError={this.addDefaultSrcToImg}
+              />
 
-            <Card.Body>
-              <Card.Title style={{ fontSize: "1rem" }}>
-                {movie.title}
-              </Card.Title>
-              {/* <Card.Text>{movie.release_date}</Card.Text> */}
-              <Card.Text>Ratings: {movie.vote_average}/10</Card.Text>
-            </Card.Body>
+              <Card.Body>
+                <Card.Title style={{ fontSize: "1rem" }}>
+                  {movie.title}
+                </Card.Title>
+                {/* <Card.Text>{movie.release_date}</Card.Text> */}
+                <Card.Text>Rating: {movie.vote_average}</Card.Text>
+              </Card.Body>
+            </Link>
           </Card>
         </Col>
       );
     });
 
     return (
-      <Container>
-        <h2
-          style={{
-            margin: "1rem"
-          }}
-        >
-          Search
-        </h2>
-        <SearchBar onChange={this.searchMovies} />
-        <h2
-          id="popular-or-results"
-          style={{
-            margin: "1rem"
-          }}
-        >
-          Popular Movies
-        </h2>
+      <Router>
+        <Container>
+          <h2
+            style={{
+              margin: "1rem"
+            }}
+          >
+            Search
+          </h2>
+          <SearchBar onChange={this.searchMovies} />
+          <h2
+            id="popular-or-results"
+            style={{
+              margin: "1rem"
+            }}
+          >
+            Popular Movies
+          </h2>
 
-        <CardGroup>{renderedMoviesList}</CardGroup>
+          <CardGroup>{renderedMoviesList}</CardGroup>
 
-        <Button
-          id="load-more"
-          onClick={this.fetchMoreMovies}
-          variant="success"
-          size="lg"
-          block
-        >
-          Load More...
-        </Button>
-      </Container>
+          <Button
+            id="load-more-btn"
+            onClick={this.fetchMoreMovies}
+            variant="success"
+            size="lg"
+            block
+          >
+            Load More Movies
+          </Button>
+        </Container>
+      </Router>
     );
   }
 }
