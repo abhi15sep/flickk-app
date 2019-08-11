@@ -2,11 +2,12 @@ import React, { Component } from "react";
 // import { SearchAlt } from "styled-icons/boxicons-regular";
 
 export default class SearchBar extends Component {
-  state = {
-    value: ""
-  };
+  // state = {
+  //   value: ""
+  // };
 
   render() {
+    const { onChange } = this.props;
     return (
       <div>
         <input
@@ -19,7 +20,7 @@ export default class SearchBar extends Component {
             border: "2px solid black",
             color: "#bbbbbb"
           }}
-          onChange={this.props.searchMovies}
+          onChange={onChange}
           type="text"
           placeholder="Search..."
         />

@@ -2,14 +2,16 @@ import React, { Component } from "react";
 
 import { CardGroup, Card, Container, Col, Button } from "react-bootstrap";
 
+import SearchBar from "./SearchBar";
 import {
   POPULAR_MOVIES_URL,
+  SEARCH_MOVIES_URL,
+  SEARCH_QUERY,
   PAGE_NUM,
   API_KEY,
   IMG_BASE_URL,
   POSTER_SIZE
 } from "../API";
-import SearchBar from "./SearchBar";
 
 export default class HomePage extends Component {
   state = {
@@ -18,11 +20,6 @@ export default class HomePage extends Component {
     searchQuery: "",
     pageNum: 1
   };
-
-  searchMovies(e) {
-    console.log(e.target.value);
-    // set page num to 1
-  }
 
   componentDidMount() {
     const { movies } = this.state;
@@ -38,6 +35,36 @@ export default class HomePage extends Component {
       .catch(err => console.error(err));
     // this.renderMovies();
   }
+
+  searchMovies = e => {
+    // const { movies } = this.state;
+
+    console.log(e.target.value);
+
+    let searchVariable = e.target.value;
+
+    if (searchVariable === "") {
+      fetch(`${POPULAR_MOVIES_URL}${API_KEY}`)
+        .then(data => data.json())
+        .then(jsondata => {
+          this.setState({
+            movies: jsondata.results
+          });
+        })
+        .catch(err => console.error(err));
+    } else {
+      fetch(`${SEARCH_MOVIES_URL}${API_KEY}${SEARCH_QUERY}${searchVariable}`)
+        .then(data => data.json())
+        .then(jsondata => {
+          this.setState({
+            movies: jsondata.results
+          });
+        })
+        .catch(err => console.error(err));
+    }
+
+    // set page num to 1 in setState
+  };
 
   fetchMoreMovies = () => {
     // fix image not found error later
@@ -88,7 +115,7 @@ export default class HomePage extends Component {
         >
           Search
         </h2>
-        <SearchBar search={this.searchMovies} />
+        <SearchBar onChange={this.searchMovies} />
         <h2
           style={{
             margin: "1rem"
