@@ -26,33 +26,69 @@ export default class HomePage extends Component {
   componentDidMount() {
     const { movies } = this.state;
 
-    fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${this.state.pageNum}`)
-      .then(data => data.json())
-      .then(jsondata => {
-        this.setState({
-          isLoading: false,
-          movies: [...movies, ...jsondata.results]
-        });
-      })
-      .catch(err => console.error(err));
+    if (sessionStorage.getItem("BaseState")) {
+      let state = JSON.parse(sessionStorage.getItem("BaseState"));
+      this.setState({ ...state });
+      console.log("from session storage");
+    } else {
+      fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${this.state.pageNum}`)
+        .then(data => data.json())
+        .then(jsondata => {
+          this.setState(
+            {
+              isLoading: false,
+              movies: [...movies, ...jsondata.results]
+            },
+            () => {
+              // Remember state for the next mount if we´re not in a search view
+              sessionStorage.setItem("BaseState", JSON.stringify(this.state));
+              console.log("saved data to session storage");
+            }
+          );
+        })
+        .catch(err => console.error(err));
+    }
   }
 
   searchMovies = e => {
     // const { movies } = this.state;
 
-    console.log(e.target.value);
+    // console.log(e.target.value);
 
-    let searchVariable = e.target.value;
+    let searchVariable = e.target.value.trim();
 
     if (searchVariable === "") {
-      fetch(`${POPULAR_MOVIES_URL}${API_KEY}`)
-        .then(data => data.json())
-        .then(jsondata => {
-          this.setState({
-            movies: jsondata.results
-          });
-        })
-        .catch(err => console.error(err));
+      document.getElementById("popular-or-results").innerText =
+        "Popular Movies";
+
+      document.getElementById("load-more").style.display = "block";
+
+      if (sessionStorage.getItem("BaseState")) {
+        let state = JSON.parse(sessionStorage.getItem("BaseState"));
+        this.setState({ ...state });
+        console.log("from session storage");
+      } else {
+        fetch(`${POPULAR_MOVIES_URL}${API_KEY}`)
+          .then(data => data.json())
+          .then(jsondata => {
+            this.setState(
+              {
+                movies: jsondata.results
+              },
+              () => {
+                // Remember state for the next mount if we are not in a search view
+                if (searchVariable === "") {
+                  sessionStorage.setItem(
+                    "BaseState",
+                    JSON.stringify(this.state)
+                  );
+                  console.log("saved data to session storage");
+                }
+              }
+            );
+          })
+          .catch(err => console.error(err));
+      }
     } else {
       fetch(`${SEARCH_MOVIES_URL}${API_KEY}${SEARCH_QUERY}${searchVariable}`)
         .then(data => data.json())
@@ -63,6 +99,11 @@ export default class HomePage extends Component {
           });
         })
         .catch(err => console.error(err));
+
+      document.getElementById("popular-or-results").innerText = "Results";
+
+      // remove load more button
+      document.getElementById("load-more").style.display = "none";
     }
   };
 
@@ -122,6 +163,7 @@ export default class HomePage extends Component {
         </h2>
         <SearchBar onChange={this.searchMovies} />
         <h2
+          id="popular-or-results"
           style={{
             margin: "1rem"
           }}
@@ -132,6 +174,7 @@ export default class HomePage extends Component {
         <CardGroup>{renderedMoviesList}</CardGroup>
 
         <Button
+          id="load-more"
           onClick={this.fetchMoreMovies}
           variant="success"
           size="lg"
