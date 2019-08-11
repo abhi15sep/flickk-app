@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import tmdblogo from "../tmdb.svg";
+import tmdblogo from "../assets/tmdb.svg";
 import { Movie } from "styled-icons/boxicons-solid";
 
 export default class Header extends Component {

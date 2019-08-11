@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { CardGroup, Card, Container, Col, Button } from "react-bootstrap";
 
+import image404 from "../assets/404.jpg";
+
 import SearchBar from "./SearchBar";
 import {
   POPULAR_MOVIES_URL,
@@ -33,7 +35,6 @@ export default class HomePage extends Component {
         });
       })
       .catch(err => console.error(err));
-    // this.renderMovies();
   }
 
   searchMovies = e => {
@@ -57,18 +58,15 @@ export default class HomePage extends Component {
         .then(data => data.json())
         .then(jsondata => {
           this.setState({
-            movies: jsondata.results
+            movies: jsondata.results,
+            pageNum: 1
           });
         })
         .catch(err => console.error(err));
     }
-
-    // set page num to 1 in setState
   };
 
   fetchMoreMovies = () => {
-    // fix image not found error later
-
     const { movies, pageNum } = this.state;
 
     fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${pageNum + 1}`)
@@ -80,6 +78,12 @@ export default class HomePage extends Component {
         });
       })
       .catch(err => console.error(err));
+
+    // console.log(this.state.pageNum);
+  };
+
+  addDefaultSrcToImg = e => {
+    e.target.src = image404;
   };
 
   render() {
@@ -92,6 +96,7 @@ export default class HomePage extends Component {
               variant="top"
               alt={movie.title}
               src={`${IMG_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
+              onError={this.addDefaultSrcToImg}
             />
 
             <Card.Body>
