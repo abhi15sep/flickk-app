@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { CardGroup, Card, Container } from "react-bootstrap";
 
-import { PERSON_URL, API_KEY } from "../API";
+import { PERSON_URL, ORIGINAL_IMG_URL, API_KEY } from "../API";
 export default class App extends Component {
   state = {
     name: "",
@@ -28,22 +28,43 @@ export default class App extends Component {
   }
 
   render() {
-    const { personID } = this.props.match.params;
+    // const { personID } = this.props.match.params;
     const { name, birth, dept, img } = this.state;
     return (
       <Fragment>
-        <Container>
-          <Card>
-            <Card.Img
-              src={`${PERSON_URL}${personID}/images?api_key=${API_KEY}`}
-            />
-            <Card.Body>
-              <Card.Title>{name}</Card.Title>
-              <Card.Text>Birthday: {birth}</Card.Text>
-              <Card.Text>Works In: {dept}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Container>
+        <div
+          className="container-div"
+          style={{
+            padding: "1rem 0",
+            background: "#222222",
+            borderRadius: 0
+          }}
+        >
+          <Container>
+            <Card
+              style={{
+                maxWidth: "300px",
+                display: "block",
+                margin: "auto",
+                border: "2px solid black"
+              }}
+            >
+              <Card.Img
+                style={{
+                  borderRadius: 0,
+                  height: "auto",
+                  width: "100%"
+                }}
+                src={`${ORIGINAL_IMG_URL}${img}`}
+              />
+              <Card.Body style={{ border: "2px solid #cccccc" }}>
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>Birthday: {birth}</Card.Text>
+                <Card.Text>Work: {dept}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Container>
+        </div>
       </Fragment>
     );
   }

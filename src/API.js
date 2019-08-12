@@ -31,6 +31,7 @@ export const API_KEY = "df6f6314c5440cba12e1c99403e78dc3";
 export const PAGE_NUM = "&page=";
 
 export const IMG_BASE_URL = "https://image.tmdb.org/t/p/";
+export const ORIGINAL_IMG_URL = "https://image.tmdb.org/t/p/original/";
 // export const BACKDROP_SIZE = "original";
 // export const BACKDROP_SIZE = "w500";
 export const BACKDROP_SIZE = "w1280";
