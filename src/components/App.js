@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import MovieCard from "./MovieCard";
+import Cast from "./Cast";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/movie/:movieID" component={MovieCard} />
+            <Route exact path="/cast/:personID" component={Cast} />
           </Switch>
         </Fragment>
       </Router>

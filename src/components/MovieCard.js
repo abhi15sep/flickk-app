@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import {
   MOVIE_CREDITS_URL,
@@ -29,9 +30,6 @@ class MovieCard extends Component {
 
   componentDidMount() {
     const { movieID } = this.props.match.params;
-
-    console.log("moviecard component mounted");
-    console.log(this.props.match.params);
 
     fetch(`${MOVIE_CREDITS_URL}${movieID}${APPEND_CREDITS}${API_KEY}`)
       .then(data => data.json())
@@ -88,9 +86,13 @@ class MovieCard extends Component {
 
     const castArray = cast.map(item => {
       return (
-        <a key={item.id} href={PERSON_URL + item.id + "?api_key=" + API_KEY}>
-          {item.name}
-        </a>
+        <Link key={item.id} to={"/cast/" + item.id}>
+          <span
+          // href={PERSON_URL + item.id + "?api_key=" + API_KEY}
+          >
+            {item.name},&nbsp;
+          </span>
+        </Link>
       );
     });
 
@@ -161,7 +163,8 @@ class MovieCard extends Component {
               <Card.Text>Budget: {budget}</Card.Text>
             </Card.Body>
           </Card>
-          {castArray}
+
+          <Card.Body>Cast: {castArray}</Card.Body>
           <a target="_blank" rel="noopener noreferrer" href={homepage}>
             Visit Movie Website
           </a>
