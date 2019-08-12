@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { CardGroup, Card, Container, Col, Button } from "react-bootstrap";
 
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import image404 from "../assets/404.jpg";
 
@@ -135,10 +135,9 @@ export default class HomePage extends Component {
     const renderedMoviesList = movies.map(movie => {
       return (
         <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
-          <Card bg="dark" text="white" className="mb-3">
-            <Link
-              to={{ pathname: `/${movie.id}`, movieName: `${movie.title}` }}
-            >
+          {/* <Link to={{ pathname: `/${movie.id}`, movieName: `${movie.title}` }}> */}
+          <Link to={"/movie/" + movie.id}>
+            <Card bg="dark" text="white" className="mb-3">
               <Card.Img
                 variant="top"
                 alt={movie.title}
@@ -153,45 +152,43 @@ export default class HomePage extends Component {
                 {/* <Card.Text>{movie.release_date}</Card.Text> */}
                 <Card.Text>Rating: {movie.vote_average}</Card.Text>
               </Card.Body>
-            </Link>
-          </Card>
+            </Card>
+          </Link>
         </Col>
       );
     });
 
     return (
-      <Router>
-        <Container>
-          <h2
-            style={{
-              margin: "1rem"
-            }}
-          >
-            Search
-          </h2>
-          <SearchBar onChange={this.searchMovies} />
-          <h2
-            id="popular-or-results"
-            style={{
-              margin: "1rem"
-            }}
-          >
-            Popular Movies
-          </h2>
+      <Container>
+        <h2
+          style={{
+            margin: "1rem"
+          }}
+        >
+          Search
+        </h2>
+        <SearchBar onChange={this.searchMovies} />
+        <h2
+          id="popular-or-results"
+          style={{
+            margin: "1rem"
+          }}
+        >
+          Popular Movies
+        </h2>
 
-          <CardGroup>{renderedMoviesList}</CardGroup>
+        <CardGroup>{renderedMoviesList}</CardGroup>
 
-          <Button
-            id="load-more-btn"
-            onClick={this.fetchMoreMovies}
-            variant="success"
-            size="lg"
-            block
-          >
-            Load More Movies
-          </Button>
-        </Container>
-      </Router>
+        <Button
+          id="load-more-btn"
+          onClick={this.fetchMoreMovies}
+          variant="success"
+          size="lg"
+          block
+        >
+          Load More Movies
+        </Button>
+      </Container>
     );
   }
 }

@@ -11,6 +11,10 @@
 
 // https://api.themoviedb.org/3/movie/299534?api_key=df6f6314c5440cba12e1c99403e78dc3
 
+// https://api.themoviedb.org/3/person/585d55ce92514123b300c1f9?api_key=df6f6314c5440cba12e1c99403e78dc3
+
+export const PERSON_URL = "https://api.themoviedb.org/3/person/";
+
 export const POPULAR_MOVIES_URL =
   "https://api.themoviedb.org/3/movie/popular?api_key=";
 export const SEARCH_MOVIES_URL =

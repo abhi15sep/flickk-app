@@ -13,7 +13,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/:movieID" component={MovieCard} />
+            <Route exact path="/movie/:movieID" component={MovieCard} />
           </Switch>
         </Fragment>
       </Router>
