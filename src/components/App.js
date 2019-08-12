@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "../App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import MovieCard from "./MovieCard";
@@ -9,7 +9,7 @@ import Cast from "./Cast";
 class App extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter basename="/">
         <Fragment>
           <Header />
           <Switch>
@@ -18,7 +18,7 @@ class App extends Component {
             <Route exact path="/cast/:personID" component={Cast} />
           </Switch>
         </Fragment>
-      </Router>
+      </HashRouter>
     );
   }
 }
