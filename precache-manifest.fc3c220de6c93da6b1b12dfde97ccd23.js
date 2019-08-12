@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c689b894f0151d0519281cc63ab05715",
+    "revision": "61789fd23d3be2f4d870ad6daeb490b6",
     "url": "/flickk-app/index.html"
   },
   {
-    "revision": "5da530dd918c8e812fa0",
-    "url": "/flickk-app/static/css/main.0e8aa222.chunk.css"
+    "revision": "30aee29cadf3c8bd8b9d",
+    "url": "/flickk-app/static/css/main.85ee16ae.chunk.css"
   },
   {
-    "revision": "f654ac6a6f84a41b13cd",
-    "url": "/flickk-app/static/js/2.d9d8b21b.chunk.js"
+    "revision": "82cdc0a3a080fd7c76df",
+    "url": "/flickk-app/static/js/2.6736c3b6.chunk.js"
   },
   {
-    "revision": "5da530dd918c8e812fa0",
-    "url": "/flickk-app/static/js/main.ce78c6e5.chunk.js"
+    "revision": "30aee29cadf3c8bd8b9d",
+    "url": "/flickk-app/static/js/main.ce76842f.chunk.js"
   },
   {
     "revision": "190d3c5b755ec517a239",
