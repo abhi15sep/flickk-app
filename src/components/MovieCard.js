@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import {
   MOVIE_CREDITS_URL,
-  PERSON_URL,
   IMG_BASE_URL,
   BACKDROP_SIZE,
   APPEND_CREDITS,
@@ -76,43 +75,28 @@ class MovieCard extends Component {
       cast
     } = this.state;
 
-    console.log(cast);
-
     const gen = genres.map(genre => genre.name);
     const genresArr = gen.join(", ");
-
-    const actorNames = cast.map(actor => actor.name);
-    console.log(actorNames);
 
     const castArray = cast.map(item => {
       return (
         <Link key={item.id} to={"/cast/" + item.id}>
-          <span
-          // href={PERSON_URL + item.id + "?api_key=" + API_KEY}
-          >
-            {item.name},&nbsp;
-          </span>
+          <span>{item.name},&nbsp;</span>
         </Link>
       );
     });
-
-    // const castNames = castArray.join(", ");
 
     return (
       <div
         className="container-div"
         style={{
-          // margin: 0,
           padding: "2rem 1rem",
           background: "#222222",
           borderRadius: 0
         }}
       >
         <Container
-          // fluid="true"
           style={{
-            // margin: 0,
-            // padding: 0,
             background: "#222222",
             borderRadius: 0
           }}

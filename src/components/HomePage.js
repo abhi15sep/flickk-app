@@ -14,9 +14,7 @@ import {
   PAGE_NUM,
   API_KEY,
   IMG_BASE_URL,
-  POSTER_SIZE,
-  MOVIE_CREDITS_URL,
-  APPEND_CREDITS
+  POSTER_SIZE
 } from "../API";
 
 export default class HomePage extends Component {
