@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import image404 from "../assets/404.jpg";
 
 import {
   MOVIE_CREDITS_URL,
@@ -37,7 +38,6 @@ class MovieCard extends Component {
           cast: json.cast
         })
       )
-      // .then(json => console.log(json))
       .catch(err => console.error(err));
 
     fetch(`${MOVIE_CREDITS_URL}${movieID}?api_key=${API_KEY}`)
@@ -58,6 +58,10 @@ class MovieCard extends Component {
         })
       );
   }
+
+  addDefaultSrcToImg = e => {
+    e.target.src = image404;
+  };
 
   render() {
     const {
@@ -131,6 +135,7 @@ class MovieCard extends Component {
             <Card.Img
               src={IMG_BASE_URL + BACKDROP_SIZE + "/" + backdrop}
               alt={title}
+              onError={this.addDefaultSrcToImg}
             />
 
             <Card.ImgOverlay />
