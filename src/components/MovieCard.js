@@ -93,6 +93,7 @@ class MovieCard extends Component {
     return (
       <div
         className="container-div"
+        id="movie-card-div"
         style={{
           padding: "2rem 1rem",
           background: "#222222",
@@ -100,6 +101,7 @@ class MovieCard extends Component {
         }}
       >
         <Container
+          id="movie-card-container"
           style={{
             background: "#222222",
             borderRadius: 0
@@ -109,7 +111,7 @@ class MovieCard extends Component {
             <Card.Title
               style={{
                 fontSize: "1.5rem",
-                background: "rgba(0, 0, 0, 0.5)",
+                background: "rgba(0, 0, 0, 0.8)",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -124,7 +126,7 @@ class MovieCard extends Component {
             <Card.Text
               style={{
                 color: "#cccccc",
-                background: "rgba(0, 0, 0, 0.5)",
+                background: "rgba(0, 0, 0, 0.8)",
                 fontSize: "1rem"
               }}
               className="m-0 pb-2"
@@ -149,7 +151,7 @@ class MovieCard extends Component {
               <Card.Text>
                 Rating: {vote} | Genres: {genresArr}
               </Card.Text>
-              <Card.Text>Budget: {budget}</Card.Text>
+              <Card.Text>Budget: ${budget}</Card.Text>
             </Card.Body>
           </Card>
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import tmdblogo from "../assets/tmdb.svg";
 import { Movie } from "styled-icons/boxicons-solid";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   render() {
@@ -20,27 +21,35 @@ export default class Header extends Component {
             // gridTemplateRows: "auto auto"
           }}
         >
-          <h1
+          <Link
+            to="/"
             style={{
-              fontSize: "1.75rem",
               textAlign: "left",
-              display: "inline-block",
-              margin: "0.5rem 1rem",
-              userSelect: "none"
+              color: "#dddddd"
             }}
-            id="title"
           >
-            <span>
-              <Movie
-                id="flickk-icon"
-                style={{
-                  height: "2rem",
-                  verticalAlign: "bottom"
-                }}
-              />
-            </span>
-            Flickk
-          </h1>
+            <h1
+              style={{
+                fontSize: "1.75rem",
+                textAlign: "left",
+                display: "inline-block",
+                margin: "0.5rem 1rem",
+                userSelect: "none"
+              }}
+              id="title"
+            >
+              <span>
+                <Movie
+                  id="flickk-icon"
+                  style={{
+                    height: "2rem",
+                    verticalAlign: "bottom"
+                  }}
+                />
+              </span>
+              Flickk
+            </h1>
+          </Link>
           <span
             style={{
               textAlign: "right",

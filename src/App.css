@@ -29,4 +29,19 @@
   #tmdb-logo a img {
     height: 1.75rem !important;
   }
+
+  #movie-card-container {
+    padding: 1rem 0 !important;
+  }
+  #movie-card-div {
+    padding: 0 !important;
+  }
+
+  #movie-card-container .card-title {
+    font-size: 1.2rem !important;
+  }
+
+  #movie-card-container .card {
+    border: 0 !important;
+  }
 }
