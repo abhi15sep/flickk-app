@@ -5,6 +5,12 @@
 
 // https://api.themoviedb.org/3/search/movie?api_key=df6f6314c5440cba12e1c99403e78dc3&query=
 
+// https://api.themoviedb.org/3/movie/299534/credits?api_key=df6f6314c5440cba12e1c99403e78dc3
+
+// https://api.themoviedb.org/3/movie/299534/images?api_key=df6f6314c5440cba12e1c99403e78dc3
+
+// https://api.themoviedb.org/3/movie/299534?api_key=df6f6314c5440cba12e1c99403e78dc3
+
 export const POPULAR_MOVIES_URL =
   "https://api.themoviedb.org/3/movie/popular?api_key=";
 export const SEARCH_MOVIES_URL =
