@@ -110,7 +110,8 @@ export default class HomePage extends Component {
 
   fetchMoreMovies = () => {
     const { movies, pageNum } = this.state;
-
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    loadMoreBtn.innerText = "Load More Movies";
     fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${pageNum + 1}`)
       .then(data => data.json())
       .then(jsondata => {
@@ -119,7 +120,10 @@ export default class HomePage extends Component {
           pageNum: jsondata.page
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        loadMoreBtn.innerText = "Couldn't Load Movies";
+      });
 
     // console.log(this.state.pageNum);
   };
@@ -180,7 +184,7 @@ export default class HomePage extends Component {
         <Button
           id="load-more-btn"
           onClick={this.fetchMoreMovies}
-          variant="success"
+          variant="dark"
           size="lg"
           block
         >
@@ -190,24 +194,3 @@ export default class HomePage extends Component {
     );
   }
 }
-
-/*
-
-<li
-          key={movie.id}
-          style={{
-            listStyle: "none"
-          }}
-        >
-          <img
-            alt={movie.title}
-            src={`${IMG_BASE_URL}${POSTER_SIZE}${movie.poster_path}`}
-          />
-
-          <div>
-            <p className="movie-title">{movie.title}</p>
-            <p className="overview">{movie.overview}</p>
-          </div>
-        </li>
-
-*/

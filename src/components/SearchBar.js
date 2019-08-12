@@ -2,15 +2,12 @@ import React, { Component } from "react";
 // import { SearchAlt } from "styled-icons/boxicons-regular";
 
 export default class SearchBar extends Component {
-  // state = {
-  //   value: ""
-  // };
-
   render() {
     const { onChange } = this.props;
     return (
       <div>
         <input
+          aria-label="Search Movies"
           style={{
             padding: "0.5rem 1rem",
             display: "block",

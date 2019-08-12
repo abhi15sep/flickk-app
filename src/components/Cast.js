@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import image404 from "../assets/404.jpg";
 
 import { PERSON_URL, ORIGINAL_IMG_URL, API_KEY } from "../API";
 export default class App extends Component {
@@ -11,6 +12,10 @@ export default class App extends Component {
     img: "",
     bio: "",
     movies: []
+  };
+
+  addDefaultSrcToImg = e => {
+    e.target.src = image404;
   };
 
   componentDidMount() {
@@ -82,6 +87,7 @@ export default class App extends Component {
                   maxWidth: "300px"
                 }}
                 src={`${ORIGINAL_IMG_URL}${img}`}
+                onError={this.addDefaultSrcToImg}
               />
               <Card.Body style={{ border: "2px solid #cccccc" }}>
                 <Card.Title>{name}</Card.Title>
