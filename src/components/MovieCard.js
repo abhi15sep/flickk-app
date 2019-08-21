@@ -60,7 +60,10 @@ class MovieCard extends Component {
   }
 
   addDefaultSrcToImg = e => {
+    // prevent infinite callbacks when image404 fails
+    e.target.onError = null;
     e.target.src = image404;
+    console.log("Image not found!");
   };
 
   render() {
