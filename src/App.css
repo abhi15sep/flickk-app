@@ -39,7 +39,8 @@ a:hover {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 #cast-list a .card {
