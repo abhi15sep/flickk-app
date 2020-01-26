@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/flickk-app/precache-manifest.ed0b3c401da802a6120db9d720290ea6.js"
+  "/flickk-app/precache-manifest.7d0240712e7f3c8cb45265ab71011749.js"
 );
 
 self.addEventListener('message', (event) => {
