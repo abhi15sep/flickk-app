@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import image404 from "../assets/404.jpg";
+import image404cast from "../assets/404cast.webp";
 
 import {
   MOVIE_CREDITS_URL,
@@ -10,7 +11,7 @@ import {
   API_KEY
 } from "../API";
 
-import { Card, Container } from "react-bootstrap";
+import { Card, Container, CardDeck } from "react-bootstrap";
 
 class MovieCard extends Component {
   state = {
@@ -66,6 +67,13 @@ class MovieCard extends Component {
     console.log("Image not found!");
   };
 
+  addDefaultSrcToCastImg = e => {
+    // prevent infinite callbacks when image404 fails
+    e.target.onError = null;
+    e.target.src = image404cast;
+    console.log("Cast image not found!");
+  };
+
   render() {
     const {
       title,
@@ -82,13 +90,31 @@ class MovieCard extends Component {
       cast
     } = this.state;
 
+    console.log(cast);
+
     const gen = genres.map(genre => genre.name);
     const genresArr = gen.join(", ");
 
     const castArray = cast.map(item => {
       return (
         <Link key={item.id} to={"/cast/" + item.id}>
-          <span>{item.name},&nbsp;</span>
+          {/* <img
+            src={`https://image.tmdb.org/t/p/w45/${item.profile_path}`}
+            alt={item.name}
+          />
+          <p>{item.name}</p> */}
+          <Card>
+            <Card.Img
+              variant="top"
+              src={`https://image.tmdb.org/t/p/w154${item.profile_path}`}
+              loading="lazy"
+              onError={this.addDefaultSrcToCastImg}
+              className="cast-images"
+            />
+            <Card.Body>
+              <Card.Text>{item.name}</Card.Text>
+            </Card.Body>
+          </Card>
         </Link>
       );
     });
@@ -110,7 +136,7 @@ class MovieCard extends Component {
             borderRadius: 0
           }}
         >
-          <Card className="bg-dark text-white">
+          <Card className="bg-dark text-white make-text-selectable">
             <Card.Title
               style={{
                 fontSize: "1.5rem",
@@ -118,7 +144,8 @@ class MovieCard extends Component {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                color: "#cccccc",
+                // color: "#cccccc",
+                color: "#01D277",
                 margin: 0,
                 paddingTop: "0.5rem"
               }}
@@ -145,20 +172,24 @@ class MovieCard extends Component {
 
             <Card.ImgOverlay />
             <Card.Body>
-              <Card.Text>{overview}</Card.Text>
+              <Card.Text className="overview-text">{overview}</Card.Text>
             </Card.Body>
             <Card.Body>
-              <Card.Text>
-                Status: {status} | Release: {release} | Runtime: {runtime}
+              <Card.Text className="green-text">
+                Status: {status} | Release: {release} | Runtime: {runtime} mins
               </Card.Text>
-              <Card.Text>
+              <Card.Text className="green-text">
                 Rating: {vote} | Genres: {genresArr}
               </Card.Text>
-              <Card.Text>Budget: ${budget}</Card.Text>
+              <Card.Text className="green-text">Budget: ${budget}</Card.Text>
             </Card.Body>
           </Card>
 
-          <Card.Body>Cast: {castArray}</Card.Body>
+          <Card.Body>
+            <p id="cast-heading">Cast</p>
+            {/* <ul id="cast-list">{castArray}</ul> */}
+            <CardDeck id="cast-list">{castArray}</CardDeck>
+          </Card.Body>
           <a target="_blank" rel="noopener noreferrer" href={homepage}>
             Visit Movie Website
           </a>

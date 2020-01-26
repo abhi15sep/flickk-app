@@ -29,6 +29,7 @@ export default class App extends Component {
     fetch(`${PERSON_URL}${personID}?api_key=${API_KEY}`)
       .then(data => data.json())
       .then(json =>
+        // console.log(json)
         this.setState({
           name: json.name,
           birth: json.birthday || "Unknown",
