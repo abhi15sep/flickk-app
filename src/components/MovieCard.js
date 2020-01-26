@@ -90,7 +90,7 @@ class MovieCard extends Component {
       cast
     } = this.state;
 
-    console.log(cast);
+    // console.log(cast);
 
     const gen = genres.map(genre => genre.name);
     const genresArr = gen.join(", ");
@@ -98,11 +98,6 @@ class MovieCard extends Component {
     const castArray = cast.map(item => {
       return (
         <Link key={item.id} to={"/cast/" + item.id}>
-          {/* <img
-            src={`https://image.tmdb.org/t/p/w45/${item.profile_path}`}
-            alt={item.name}
-          />
-          <p>{item.name}</p> */}
           <Card>
             <Card.Img
               variant="top"
@@ -144,7 +139,6 @@ class MovieCard extends Component {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                // color: "#cccccc",
                 color: "#01D277",
                 margin: 0,
                 paddingTop: "0.5rem"
@@ -187,7 +181,6 @@ class MovieCard extends Component {
 
           <Card.Body>
             <p id="cast-heading">Cast</p>
-            {/* <ul id="cast-list">{castArray}</ul> */}
             <CardDeck id="cast-list">{castArray}</CardDeck>
           </Card.Body>
           <a target="_blank" rel="noopener noreferrer" href={homepage}>
