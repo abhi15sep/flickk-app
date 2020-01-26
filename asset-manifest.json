@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/flickk-app/static/css/main.585a74f4.chunk.css",
+    "main.css": "/flickk-app/static/css/main.1ec65da4.chunk.css",
     "main.js": "/flickk-app/static/js/main.b2cb6c84.chunk.js",
     "main.js.map": "/flickk-app/static/js/main.b2cb6c84.chunk.js.map",
     "runtime-main.js": "/flickk-app/static/js/runtime-main.657d55f6.js",
@@ -8,9 +8,9 @@
     "static/js/2.a4423cb5.chunk.js": "/flickk-app/static/js/2.a4423cb5.chunk.js",
     "static/js/2.a4423cb5.chunk.js.map": "/flickk-app/static/js/2.a4423cb5.chunk.js.map",
     "index.html": "/flickk-app/index.html",
-    "precache-manifest.d0895c78e245e6e84eb389accf6dd9ae.js": "/flickk-app/precache-manifest.d0895c78e245e6e84eb389accf6dd9ae.js",
+    "precache-manifest.ed0b3c401da802a6120db9d720290ea6.js": "/flickk-app/precache-manifest.ed0b3c401da802a6120db9d720290ea6.js",
     "service-worker.js": "/flickk-app/service-worker.js",
-    "static/css/main.585a74f4.chunk.css.map": "/flickk-app/static/css/main.585a74f4.chunk.css.map",
+    "static/css/main.1ec65da4.chunk.css.map": "/flickk-app/static/css/main.1ec65da4.chunk.css.map",
     "static/js/2.a4423cb5.chunk.js.LICENSE": "/flickk-app/static/js/2.a4423cb5.chunk.js.LICENSE",
     "static/media/404.jpg": "/flickk-app/static/media/404.c35f1447.jpg",
     "static/media/404cast.webp": "/flickk-app/static/media/404cast.762ddd08.webp",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.657d55f6.js",
     "static/js/2.a4423cb5.chunk.js",
-    "static/css/main.585a74f4.chunk.css",
+    "static/css/main.1ec65da4.chunk.css",
     "static/js/main.b2cb6c84.chunk.js"
   ]
 }
