@@ -36,7 +36,10 @@ export const ORIGINAL_IMG_URL = "https://image.tmdb.org/t/p/original/";
 // export const BACKDROP_SIZE = "w500";
 export const BACKDROP_SIZE = "w1280";
 export const LOGO_SIZE = "w92";
-export const POSTER_SIZE = "w342";
+// export const POSTER_SIZE = "w342";
+// changed poster_size to w300 to fix audit properly size images issue
+// if there are any problems, change it back to w342.
+export const POSTER_SIZE = "w300";
 
 // const configuration = {
 //   images: {

@@ -14,7 +14,7 @@ export default class SearchBar extends Component {
             width: "100%",
             background: "rgba(0, 0, 0, 0.9)",
             outline: "none",
-            border: "2px solid black",
+            border: "2px solid #339933",
             color: "#bbbbbb"
           }}
           onChange={onChange}
