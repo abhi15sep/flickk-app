@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/flickk-app/static/css/main.0c3f96e7.chunk.css",
-    "main.js": "/flickk-app/static/js/main.04e557b1.chunk.js",
-    "main.js.map": "/flickk-app/static/js/main.04e557b1.chunk.js.map",
+    "main.css": "/flickk-app/static/css/main.bb966929.chunk.css",
+    "main.js": "/flickk-app/static/js/main.89256585.chunk.js",
+    "main.js.map": "/flickk-app/static/js/main.89256585.chunk.js.map",
     "runtime-main.js": "/flickk-app/static/js/runtime-main.657d55f6.js",
     "runtime-main.js.map": "/flickk-app/static/js/runtime-main.657d55f6.js.map",
     "static/js/2.73124816.chunk.js": "/flickk-app/static/js/2.73124816.chunk.js",
     "static/js/2.73124816.chunk.js.map": "/flickk-app/static/js/2.73124816.chunk.js.map",
     "index.html": "/flickk-app/index.html",
-    "precache-manifest.b3799a946c17d57c8a73dda9e85d6978.js": "/flickk-app/precache-manifest.b3799a946c17d57c8a73dda9e85d6978.js",
+    "precache-manifest.17ae1fce975a6f7bb28433382eb64e1e.js": "/flickk-app/precache-manifest.17ae1fce975a6f7bb28433382eb64e1e.js",
     "service-worker.js": "/flickk-app/service-worker.js",
-    "static/css/main.0c3f96e7.chunk.css.map": "/flickk-app/static/css/main.0c3f96e7.chunk.css.map",
+    "static/css/main.bb966929.chunk.css.map": "/flickk-app/static/css/main.bb966929.chunk.css.map",
     "static/js/2.73124816.chunk.js.LICENSE": "/flickk-app/static/js/2.73124816.chunk.js.LICENSE",
     "static/media/404.jpg": "/flickk-app/static/media/404.c35f1447.jpg",
     "static/media/404cast.webp": "/flickk-app/static/media/404cast.762ddd08.webp",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.657d55f6.js",
     "static/js/2.73124816.chunk.js",
-    "static/css/main.0c3f96e7.chunk.css",
-    "static/js/main.04e557b1.chunk.js"
+    "static/css/main.bb966929.chunk.css",
+    "static/js/main.89256585.chunk.js"
   ]
 }
