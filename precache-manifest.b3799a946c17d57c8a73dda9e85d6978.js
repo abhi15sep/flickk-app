@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6f72c9a28d343d841049c4f8b6b8b33f",
+    "revision": "da5939c3e7ab2bc017186fcec80200eb",
     "url": "/flickk-app/index.html"
   },
   {
-    "revision": "213ba94c333eddf376ad",
-    "url": "/flickk-app/static/css/main.1ec65da4.chunk.css"
+    "revision": "945490dcdba6cdf7e5b5",
+    "url": "/flickk-app/static/css/main.0c3f96e7.chunk.css"
   },
   {
-    "revision": "5e3123384066be5b5c70",
-    "url": "/flickk-app/static/js/2.a4423cb5.chunk.js"
+    "revision": "28d3f7881f1ed3cc8ede",
+    "url": "/flickk-app/static/js/2.73124816.chunk.js"
   },
   {
     "revision": "889aa161e4768b2e17225003a1a2dc04",
-    "url": "/flickk-app/static/js/2.a4423cb5.chunk.js.LICENSE"
+    "url": "/flickk-app/static/js/2.73124816.chunk.js.LICENSE"
   },
   {
-    "revision": "213ba94c333eddf376ad",
-    "url": "/flickk-app/static/js/main.8f5b8863.chunk.js"
+    "revision": "945490dcdba6cdf7e5b5",
+    "url": "/flickk-app/static/js/main.04e557b1.chunk.js"
   },
   {
     "revision": "657ba36ab207a17d6432",
@@ -30,6 +30,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "762ddd08e3aafe1c4a3cd95f826ec28f",
     "url": "/flickk-app/static/media/404cast.762ddd08.webp"
+  },
+  {
+    "revision": "bdd79ffe4346e674cb2c86689ed3cac3",
+    "url": "/flickk-app/static/media/movie404.bdd79ffe.jpg"
   },
   {
     "revision": "02a9430b88975cae16fcfcc9cf7b5799",
