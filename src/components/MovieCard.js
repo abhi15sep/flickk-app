@@ -36,7 +36,12 @@ class MovieCard extends Component {
       .then(data => data.json())
       .then(json =>
         this.setState({
-          cast: json.cast
+          // destructured to store only required info
+          cast: json.cast.map(({ id, name, profile_path }) => ({
+            id,
+            name,
+            profile_path
+          }))
         })
       )
       .catch(err => console.log(err));
@@ -104,9 +109,14 @@ class MovieCard extends Component {
             <Card.Img
               variant="top"
               src={`https://image.tmdb.org/t/p/w154${item.profile_path}`}
+              width="154px"
+              height="auto"
+              style={{
+                width: "154px",
+                height: "auto"
+              }}
               alt={item.name}
               loading="lazy"
-              width="154px"
               onError={this.addDefaultSrcToCastImg}
               className="cast-images"
             />
