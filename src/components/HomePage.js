@@ -61,7 +61,7 @@ export default class HomePage extends Component {
 
     if (searchVariable === "") {
       document.getElementById("popular-or-results").innerText =
-        "Popular Movies";
+        "Trending Movies";
 
       document.getElementById("load-more-btn").style.display = "block";
 
@@ -164,7 +164,7 @@ export default class HomePage extends Component {
     });
 
     return (
-      <Container>
+      <Container id="homepage-container">
         <h2
           style={{
             margin: "1rem"
@@ -179,7 +179,7 @@ export default class HomePage extends Component {
             margin: "1rem"
           }}
         >
-          Popular Movies
+          Trending Movies
         </h2>
 
         <CardGroup>{renderedMoviesList}</CardGroup>
@@ -187,7 +187,11 @@ export default class HomePage extends Component {
         <Button
           id="load-more-btn"
           onClick={this.fetchMoreMovies}
-          variant="dark"
+          // variant="dark"
+          style={{
+            background: "#0f0f0f",
+            border: "2px solid #339933"
+          }}
           size="lg"
           block
         >

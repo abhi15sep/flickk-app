@@ -34,18 +34,20 @@ export default class App extends Component {
           name: json.name,
           birth: json.birthday || "Unknown",
           dept: json.known_for_department || "Unknown",
-          bio: json.biography || "Information Not Found!",
+          bio: json.biography || "Information unavailable.",
           img: json.profile_path
         })
       )
       .catch(err => console.error(err));
 
     // fetch movies they have worked in
+
     fetch(`${PERSON_URL}${personID}/movie_credits?api_key=${API_KEY}`)
       .then(data => data.json())
       .then(json =>
         this.setState({
-          movies: json.cast
+          // get only title and id fields from cast array
+          movies: json.cast.map(({ title, id }) => ({ title, id }))
         })
       )
       .catch(err => console.error(err));
@@ -55,9 +57,19 @@ export default class App extends Component {
     // const { personID } = this.props.match.params;
     const { name, birth, dept, img, bio, movies } = this.state;
 
-    const moviesArr = movies.map(movie => {
+    const moviesLen = movies.length;
+
+    const moviesArr = movies.map((movie, index) => {
+      // add a period after last movie
+      if (index === moviesLen - 1) {
+        return (
+          <Link className="mmm" key={movie.id} to={"/movie/" + movie.id}>
+            <span>{movie.title}.</span>
+          </Link>
+        );
+      }
       return (
-        <Link key={movie.id} to={"/movie/" + movie.id}>
+        <Link className="mmm" key={movie.id} to={"/movie/" + movie.id}>
           <span>{movie.title},&nbsp;</span>
         </Link>
       );
@@ -91,15 +103,29 @@ export default class App extends Component {
                   maxWidth: "300px"
                 }}
                 src={`${ORIGINAL_IMG_URL}${img}`}
+                alt={name}
                 onError={this.addDefaultSrcToImg}
               />
               <Card.Body style={{ border: "2px solid #cccccc" }}>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>Birthday: {birth}</Card.Text>
-                <Card.Text>Work: {dept}</Card.Text>
-                <Card.Text>Biography: {bio}</Card.Text>
+                <Card.Title>
+                  <span className="green-text">{name}</span>
+                </Card.Title>
+
+                <Card.Text>
+                  <span className="green-text">Birthday:</span> {birth}
+                </Card.Text>
+                <Card.Text>
+                  <span className="green-text">Work:</span> {dept}
+                </Card.Text>
+                <Card.Text>
+                  <span className="green-text">Biography:</span> {bio}
+                </Card.Text>
               </Card.Body>
-              <Card.Body>Movies: {moviesArr}</Card.Body>
+              <Card.Body
+                style={{ border: "2px solid #cccccc", borderTop: "none" }}
+              >
+                <span className="green-text">Movies:</span> {moviesArr}
+              </Card.Body>
             </Card>
           </Container>
         </div>
