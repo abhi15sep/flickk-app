@@ -12,7 +12,9 @@ import {
 } from "../API";
 
 import { Card, Container, CardDeck } from "react-bootstrap";
+// import CastList from "./CastList";
 
+// let castsArray = [];
 class MovieCard extends Component {
   state = {
     title: "",
@@ -26,10 +28,13 @@ class MovieCard extends Component {
     runtime: "",
     status: "",
     tagline: "",
-    vote: ""
+    vote: "",
+    numOfCastItemsToShow: 10
   };
 
   componentDidMount() {
+    window.addEventListener("scroll", this.onScroll, false);
+
     const { movieID } = this.props.match.params;
 
     fetch(`${MOVIE_CREDITS_URL}${movieID}${APPEND_CREDITS}${API_KEY}`)
@@ -67,6 +72,23 @@ class MovieCard extends Component {
       );
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll, false);
+  }
+
+  onScroll = () => {
+    // console.log("window.innerHeight", window.innerHeight);
+    // console.log("window.scrollY", window.scrollY);
+    // console.log("document.body.offsetHeight", document.body.offsetHeight);
+
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 &&
+      this.state.cast.length
+    ) {
+      this.loadCastOnScroll();
+    }
+  };
+
   addDefaultSrcToImg = e => {
     // prevent infinite callbacks when image404 fails
     e.target.onError = null;
@@ -76,9 +98,17 @@ class MovieCard extends Component {
 
   addDefaultSrcToCastImg = e => {
     // prevent infinite callbacks when image404 fails
+    for (let i = 0; i < 2; i++) {}
+    // e.preventDefault();
     e.target.onError = null;
     e.target.src = cast404img;
     console.log("Cast image not found!");
+  };
+
+  loadCastOnScroll = () => {
+    this.setState(prevState => ({
+      numOfCastItemsToShow: prevState.numOfCastItemsToShow + 10
+    }));
   };
 
   render() {
@@ -94,7 +124,8 @@ class MovieCard extends Component {
       status,
       tagline,
       vote,
-      cast
+      cast,
+      numOfCastItemsToShow
     } = this.state;
 
     // console.log(cast);
@@ -102,31 +133,37 @@ class MovieCard extends Component {
     const gen = genres.map(genre => genre.name);
     const genresArr = gen.join(", ");
 
-    const castArray = cast.map(item => {
-      return (
-        <Link key={item.id} to={"/cast/" + item.id}>
-          <Card>
-            <Card.Img
-              variant="top"
-              src={`https://image.tmdb.org/t/p/w154${item.profile_path}`}
-              width="154px"
-              height="auto"
-              style={{
-                width: "154px",
-                height: "auto"
-              }}
-              alt={item.name}
-              loading="lazy"
-              onError={this.addDefaultSrcToCastImg}
-              className="cast-images"
-            />
-            <Card.Body>
-              <Card.Text>{item.name}</Card.Text>
-            </Card.Body>
-          </Card>
-        </Link>
-      );
-    });
+    const newCastArray = cast
+      .slice(0, numOfCastItemsToShow)
+      .map(({ id, name, profile_path }) => {
+        return (
+          <Link key={id} to={"/cast/" + id}>
+            <Card>
+              <Card.Img
+                variant="top"
+                src={`https://image.tmdb.org/t/p/w154${profile_path}`}
+                width="154px"
+                height="auto"
+                style={{
+                  width: "154px",
+                  height: "auto"
+                }}
+                alt={name}
+                loading="lazy"
+                // onError={e => {
+                //   for (let i = 0; i < 2; i++) {
+                //     this.addDefaultSrcToCastImg(e);
+                //   }
+                // }}
+                className="cast-images"
+              />
+              <Card.Body>
+                <Card.Text>{name}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Link>
+        );
+      });
 
     return (
       <div
@@ -238,10 +275,21 @@ class MovieCard extends Component {
             </Card.Body>
           </Card>
 
-          <Card.Body>
+          {/* <Card.Body>
             <p id="cast-heading">Cast</p>
             <CardDeck id="cast-list">{castArray}</CardDeck>
+          </Card.Body> */}
+          <Card.Body>
+            <p id="cast-heading">Cast</p>
+            <CardDeck id="cast-list">{newCastArray}</CardDeck>
           </Card.Body>
+          {/* <Card.Body>
+            <p id="cast-heading">Cast</p>
+            <CardDeck id="cast-list">
+              <CastList cast={cast} />
+              <CastList>{this.loadCastOnScroll}</CastList>
+            </CardDeck>
+          </Card.Body> */}
           <a
             className="visit-movie-website"
             target="_blank"
