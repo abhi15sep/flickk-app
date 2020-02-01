@@ -1,16 +1,15 @@
 {
   "homepage": "https://abhishekakade.github.io/flickk-app",
   "name": "flickk",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.4.1",
     "gh-pages": "^2.2.0",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.3.1",
     "styled-components": "^4.4.1",
     "styled-icons": "^8.6.0"
   },
@@ -36,5 +35,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
