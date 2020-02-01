@@ -32,9 +32,10 @@ export const PAGE_NUM = "&page=";
 
 export const IMG_BASE_URL = "https://image.tmdb.org/t/p/";
 export const ORIGINAL_IMG_URL = "https://image.tmdb.org/t/p/original/";
-// export const BACKDROP_SIZE = "original";
+
 // export const BACKDROP_SIZE = "w500";
 export const BACKDROP_SIZE = "w1280";
+// export const BACKDROP_SIZE_ORIGINAL = "original";
 export const LOGO_SIZE = "w92";
 // export const POSTER_SIZE = "w342";
 // changed poster_size to w300 to fix audit properly size images issue
