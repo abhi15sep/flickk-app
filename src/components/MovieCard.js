@@ -70,6 +70,8 @@ class MovieCard extends Component {
           vote: json.vote_average
         })
       );
+
+    console.log(this.state.cast);
   }
 
   componentWillUnmount() {
@@ -141,7 +143,11 @@ class MovieCard extends Component {
             <Card>
               <Card.Img
                 variant="top"
-                src={`https://image.tmdb.org/t/p/w154${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w154${profile_path}`
+                    : cast404img
+                }
                 width="154px"
                 height="auto"
                 style={{
@@ -150,11 +156,7 @@ class MovieCard extends Component {
                 }}
                 alt={name}
                 loading="lazy"
-                // onError={e => {
-                //   for (let i = 0; i < 2; i++) {
-                //     this.addDefaultSrcToCastImg(e);
-                //   }
-                // }}
+                onError={this.addDefaultSrcToCastImg}
                 className="cast-images"
               />
               <Card.Body>
