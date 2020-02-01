@@ -63,6 +63,7 @@ a {
 #cast-list a .card {
   background-color: #222222;
   box-sizing: content-box;
+  width: 154px;
 }
 
 #cast-list a .card p {
