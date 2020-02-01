@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+#homepage-container .card-group {
+  justify-content: center;
+}
+
 #homepage-container .card {
   border: 2px solid #575757;
 }
