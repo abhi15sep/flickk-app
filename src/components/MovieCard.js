@@ -110,8 +110,6 @@ class MovieCard extends Component {
 
   addDefaultSrcToCastImg = e => {
     // prevent infinite callbacks when image404 fails
-    for (let i = 0; i < 2; i++) {}
-    // e.preventDefault();
     e.target.onError = null;
     e.target.src = cast404img;
     console.log("Cast image not found!");
@@ -140,7 +138,7 @@ class MovieCard extends Component {
       numOfCastItemsToShow
     } = this.state;
 
-    // console.log(cast);
+    // console.log(backdrop);
 
     const gen = genres.map(genre => genre.name);
     const genresArr = gen.join(", ");
@@ -228,8 +226,8 @@ class MovieCard extends Component {
 
             <Card.Img
               src={
-                BACKDROP_SIZE
-                  ? `${IMG_BASE_URL + BACKDROP_SIZE}/${backdrop}`
+                backdrop
+                  ? `${IMG_BASE_URL + BACKDROP_SIZE + backdrop}`
                   : movie404img
               }
               alt={title}

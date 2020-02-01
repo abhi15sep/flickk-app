@@ -164,7 +164,7 @@ export default class HomePage extends Component {
 
   render() {
     const { movies } = this.state;
-    console.log(movies);
+    // console.log(movies);
 
     const renderedMoviesList = movies.map(movie => {
       return (
