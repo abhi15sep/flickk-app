@@ -38,7 +38,13 @@ class MovieCard extends Component {
     const { movieID } = this.props.match.params;
 
     fetch(`${MOVIE_CREDITS_URL}${movieID}${APPEND_CREDITS}${API_KEY}`)
-      .then(data => data.json())
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText, "failed to fetch cast");
+        }
+      })
       .then(json =>
         this.setState({
           // destructured to store only required info
@@ -54,7 +60,13 @@ class MovieCard extends Component {
     // besides, its just to log that image wasn't available in tmdb anyway
 
     fetch(`${MOVIE_CREDITS_URL}${movieID}?api_key=${API_KEY}`)
-      .then(data => data.json())
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText, "failed to fetch movie details");
+        }
+      })
       .then(json =>
         this.setState({
           title: json.title,
@@ -70,8 +82,6 @@ class MovieCard extends Component {
           vote: json.vote_average
         })
       );
-
-    console.log(this.state.cast);
   }
 
   componentWillUnmount() {
@@ -84,7 +94,7 @@ class MovieCard extends Component {
     // console.log("document.body.offsetHeight", document.body.offsetHeight);
 
     if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 &&
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
       this.state.cast.length
     ) {
       this.loadCastOnScroll();
@@ -217,7 +227,11 @@ class MovieCard extends Component {
             )}
 
             <Card.Img
-              src={IMG_BASE_URL + BACKDROP_SIZE + "/" + backdrop}
+              src={
+                BACKDROP_SIZE
+                  ? `${IMG_BASE_URL + BACKDROP_SIZE}/${backdrop}`
+                  : movie404img
+              }
               alt={title}
               onError={this.addDefaultSrcToImg}
             />
@@ -277,29 +291,21 @@ class MovieCard extends Component {
             </Card.Body>
           </Card>
 
-          {/* <Card.Body>
-            <p id="cast-heading">Cast</p>
-            <CardDeck id="cast-list">{castArray}</CardDeck>
-          </Card.Body> */}
           <Card.Body>
             <p id="cast-heading">Cast</p>
             <CardDeck id="cast-list">{newCastArray}</CardDeck>
           </Card.Body>
-          {/* <Card.Body>
-            <p id="cast-heading">Cast</p>
-            <CardDeck id="cast-list">
-              <CastList cast={cast} />
-              <CastList>{this.loadCastOnScroll}</CastList>
-            </CardDeck>
-          </Card.Body> */}
-          <a
-            className="visit-movie-website"
-            target="_blank"
-            rel="noopener noreferrer"
-            href={homepage}
-          >
-            Visit Movie Website
-          </a>
+
+          {homepage && (
+            <a
+              className="visit-movie-website"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={homepage}
+            >
+              Visit Movie Website
+            </a>
+          )}
         </Container>
       </div>
     );

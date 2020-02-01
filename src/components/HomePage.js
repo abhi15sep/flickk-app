@@ -34,7 +34,13 @@ export default class HomePage extends Component {
       console.log("from session storage");
     } else {
       fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${this.state.pageNum}`)
-        .then(data => data.json())
+        .then(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText, "failed to fetch");
+          }
+        })
         .then(jsondata => {
           this.setState(
             {
@@ -71,7 +77,16 @@ export default class HomePage extends Component {
         console.log("from session storage");
       } else {
         fetch(`${POPULAR_MOVIES_URL}${API_KEY}`)
-          .then(data => data.json())
+          .then(response => {
+            if (response.status >= 200 && response.status <= 299) {
+              return response.json();
+            } else {
+              throw Error(
+                response.statusText,
+                "failed to fetch trending movies"
+              );
+            }
+          })
           .then(jsondata => {
             this.setState(
               {
@@ -93,7 +108,13 @@ export default class HomePage extends Component {
       }
     } else {
       fetch(`${SEARCH_MOVIES_URL}${API_KEY}${SEARCH_QUERY}${searchVariable}`)
-        .then(data => data.json())
+        .then(response => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText, "failed to fetch");
+          }
+        })
         .then(jsondata => {
           this.setState({
             movies: jsondata.results,
@@ -113,7 +134,13 @@ export default class HomePage extends Component {
     const loadMoreBtn = document.getElementById("load-more-btn");
     loadMoreBtn.innerText = "Load More Movies";
     fetch(`${POPULAR_MOVIES_URL}${API_KEY}${PAGE_NUM}${pageNum + 1}`)
-      .then(data => data.json())
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText, "failed to fetch movies");
+        }
+      })
       .then(jsondata => {
         this.setState({
           movies: [...movies, ...jsondata.results],
@@ -137,6 +164,8 @@ export default class HomePage extends Component {
 
   render() {
     const { movies } = this.state;
+    console.log(movies);
+
     const renderedMoviesList = movies.map(movie => {
       return (
         <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>

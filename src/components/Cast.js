@@ -27,7 +27,13 @@ export default class App extends Component {
 
     // fetch personal details
     fetch(`${PERSON_URL}${personID}?api_key=${API_KEY}`)
-      .then(data => data.json())
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText, "failed to fetch cast details");
+        }
+      })
       .then(json =>
         // console.log(json)
         this.setState({
@@ -44,7 +50,13 @@ export default class App extends Component {
     // fetch movies they have worked in
 
     fetch(`${PERSON_URL}${personID}/movie_credits?api_key=${API_KEY}`)
-      .then(data => data.json())
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText, "failed to fetch movies");
+        }
+      })
       .then(json =>
         this.setState({
           // get only title and id fields from cast array
@@ -58,6 +70,7 @@ export default class App extends Component {
   render() {
     // const { personID } = this.props.match.params;
     const { name, birth, dept, img, bio, movies } = this.state;
+    // console.log(img);
 
     const moviesLen = movies.length;
 
@@ -104,7 +117,7 @@ export default class App extends Component {
                   width: "100%",
                   maxWidth: "300px"
                 }}
-                src={`${ORIGINAL_IMG_URL}${img}`}
+                src={img ? `${ORIGINAL_IMG_URL}${img}` : image404}
                 alt={name}
                 onError={this.addDefaultSrcToImg}
               />
