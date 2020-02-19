@@ -219,7 +219,9 @@ export default class HomePage extends Component {
           // variant="dark"
           style={{
             background: "#0f0f0f",
-            border: "2px solid #339933"
+            border: "2px solid #339933",
+            margin: "0.5rem auto",
+            width: "calc(100% - 1.75rem)"
           }}
           size="lg"
           block

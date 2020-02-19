@@ -11,7 +11,8 @@ export default class SearchBar extends Component {
           style={{
             padding: "0.5rem 1rem",
             display: "block",
-            width: "100%",
+            margin: "auto",
+            width: "calc(100% - 1.75rem)",
             background: "rgba(0, 0, 0, 0.9)",
             outline: "none",
             border: "2px solid #339933",

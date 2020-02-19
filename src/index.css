@@ -1,5 +1,9 @@
 html {
   background: #121212;
+
+  /* Scrollbar Properties For Firefox Browser */
+  scrollbar-width: thin;
+  scrollbar-color: #339933 #000000;
 }
 
 body {
@@ -16,4 +20,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #339933;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: #339933;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
 }
