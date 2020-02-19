@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fa5b508ad16a76176c667e1da6a87e83",
+    "revision": "e7da90cff7707dafdbb6f73ade2054fa",
     "url": "/flickk-app/index.html"
   },
   {
-    "revision": "c82fd1fd9cd3e3383afd",
-    "url": "/flickk-app/static/css/main.565021de.chunk.css"
+    "revision": "8a9f49408f99e6c4d7cb",
+    "url": "/flickk-app/static/css/main.8f4c759f.chunk.css"
   },
   {
-    "revision": "d509f0b9bcc64ff4a093",
-    "url": "/flickk-app/static/js/2.7c91d6c2.chunk.js"
+    "revision": "bb9b9d81246b02a0b68e",
+    "url": "/flickk-app/static/js/2.6ed73c21.chunk.js"
   },
   {
     "revision": "6950e7abd765baab551a704822690952",
-    "url": "/flickk-app/static/js/2.7c91d6c2.chunk.js.LICENSE.txt"
+    "url": "/flickk-app/static/js/2.6ed73c21.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c82fd1fd9cd3e3383afd",
-    "url": "/flickk-app/static/js/main.6ceed805.chunk.js"
+    "revision": "8a9f49408f99e6c4d7cb",
+    "url": "/flickk-app/static/js/main.7f87847e.chunk.js"
   },
   {
     "revision": "657ba36ab207a17d6432",
